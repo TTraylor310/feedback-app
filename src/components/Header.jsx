@@ -1,10 +1,21 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
-const Header = ({text}) => {
+const Header = ({ text, bgColor, textColor }) => {
+  const headerStyles = {
+    backgroundColor: bgColor,
+    color: textColor,
+  };
+
   return (
-    <header >
-      <div className='bg-blue-600 text-red-600'>
-        <h2 className='text-2xl'>{text}</h2>
+    <header style={headerStyles}>
+      <div className='container'>
+        <Link to='/' style={{ 
+          textDecoration: 'none', 
+          color: '#ff6a95' 
+        }}>
+          <h2>{text}</h2>
+        </Link>
       </div>
     </header>
   );
@@ -12,10 +23,14 @@ const Header = ({text}) => {
 
 Header.defaultProps = {
   text: 'Feedback UI',
-}
+  bgColor: 'rgba(0,0,0,0.4)',
+  textColor: '#ff6a95',
+};
 
 Header.propTypes = {
-  text: PropTypes.string
-}
+  text: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+};
 
 export default Header;
